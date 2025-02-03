@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:37:03 by antoine           #+#    #+#             */
-/*   Updated: 2025/01/29 16:37:08 by antoine          ###   ########.fr       */
+/*   Updated: 2025/02/03 16:42:09 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+void push_swap(int argv, char **argc)
+{
+    
+    create_stack(argv, argc);
+}
