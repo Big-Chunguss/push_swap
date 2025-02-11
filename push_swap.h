@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 13:49:13 by agaroux           #+#    #+#             */
-/*   Updated: 2025/02/03 18:15:59 by agaroux          ###   ########.fr       */
+/*   Created: 2025/02/10 16:50:16 by antoine           #+#    #+#             */
+/*   Updated: 2025/02/11 17:13:40 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,57 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-struct					t_list
+struct			node
 {
-	int					data;
-	struct t_list		*previous;
-	struct t_list		*next;
-};
+	int			data;
+	struct node	*previous;
+	struct node	*next;
+} t_list;
 
-typedef struct t_list	t_list;
+int				ft_atoi(const char *str);
 
-t_list					*ft_lstnew(void *content);
+int				main(int argc, char **argv);
 
-void					ft_lstadd_front(t_list **lst, t_list *new);
+int				ft_isspace(int c);
 
-int						ft_lstsize(t_list *lst);
+void			ft_displaybackward(struct node *tail);
 
-t_list					*ft_lstlast(t_list *lst);
+void			ft_displayforward(struct node *head);
 
-void					ft_lstadd_back(t_list **lst, t_list *new);
+struct node		*ft_newnode(int a);
 
-void					ft_lstdelone(t_list *lst, void (*del)(void *));
+void			ft_append(struct node **head, struct node **tail, int a);
 
-void					ft_lstclear(t_list **lst, void (*del)(void *));
+static int		word_count(const char *str, char c);
 
-void					ft_lstiter(t_list *lst, void (*f)(void *));
+static char		*fill_word(const char *str, int start, int end);
+
+static void		*ft_free(char **strs, int count);
+
+static void		ft_initiate_vars(size_t *i, int *j, int *s_word);
+
+char			**ft_split(const char *s, char c);
+
+void			*ft_calloc(size_t count, size_t size);
+
+size_t			ft_strlen(const char *s);
+
+int				ft_check_repetition(char **tab);
+
+// Rotate & swap
+void			rotate(struct node **head);
+void			ra(struct node **head);
+void			rb(struct node **head);
+void			rr(struct node **head_a, struct node **head_b);
+void			r_rotate(struct node **head);
+void			rra(struct node **head);
+void			rrb(struct node **head);
+void			rrr(struct node **head_a, struct node **head_b);
+void			swap(struct node **head);
+void			swap_a(struct node **head);
+void			swap_b(struct node **head);
+void			swap_both(struct node **head_a, struct node **head_b);
 
 #endif
