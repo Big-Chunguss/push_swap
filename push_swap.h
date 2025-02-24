@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:50:16 by antoine           #+#    #+#             */
-/*   Updated: 2025/02/22 17:29:01 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:44:16 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include <limits.h>
 
 typedef struct node
 {
@@ -57,6 +59,19 @@ int				ft_check_repetition(char **tab);
 t_list			*ft_lstnew(int data);
 
 void	ft_lstadd_front(t_list **lst, t_list *new);
+
+int 	ft_isdigit(char **tab);
+
+void	stack_init(t_list **a, t_list **b, char **argv, bool flag_argc_2);
+
+//free
+void 	free_matrix(char **argv);
+void 	free_stack(t_list **stack);
+void 	error_free(t_list **stack, char **argv, bool flag_argc_2);
+
+//sort
+t_list	*ft_max(t_list *head);
+void 	ez_sort(t_list **head);
 
 // Rotate & swap
 void			rotate(t_list **head);

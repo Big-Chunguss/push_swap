@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:06:33 by antoine           #+#    #+#             */
-/*   Updated: 2025/02/24 11:34:30 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:32:05 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,36 +58,6 @@ void ft_displaybackward(t_list *tail)
     }
 }
 
-t_list *ft_read_one_input(char *str, t_list *head, t_list *tail)
-{
-        int i;
-        char **tab;
-
-        i = 0;
-        while (str[i])
-    {
-        if ((str[i] < '0' || str[i] > '9') && str[i] != ' ')
-        {
-            write(2, "Error: Invalid input\n", 21);
-            return 0;
-        }
-        i++;
-    }
-        tab = ft_split(str, ' ');
-        if (!tab)
-            return NULL;
-        i = 0;
-        while (tab[i])
-        {
-            int num = ft_atoi(tab[i]);
-        ft_append(&head, &tail, num);
-        free(tab[i]);
-        i++;
-        }
-        free(tab);
-        return (head);
-}
-
 int main(int argc, char **argv)
 {
     t_list *head = NULL;
@@ -97,19 +67,11 @@ int main(int argc, char **argv)
     if (argc <= 1 || (argc == 2 && !argv[1][0]))
         return (0);
     else if (argc == 2)
-    {
-        printf("only one argument");
-        ft_read_one_input(argv[1], head, tail);
-        return (0);
-    }
-    count = 1;
-    while (count < argc)
-    {
-        if (!ft_atoi(argv[count]))
-            return (0);
-        ft_append(&head, &tail, ft_atoi(argv[count++]));
-    }
+        argv = ft_split(argv[1], ' ');
+    //printf("%s", argv[1]);
+    stack_init(&head, &tail, argv + 1, 2 == argc);
+    ez_sort(&head);
     ft_displayforward(head);
-    ft_displaybackward(tail);
+    //ft_displaybackward(tail);
     return (0);
 }
