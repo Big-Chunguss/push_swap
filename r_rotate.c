@@ -6,16 +6,16 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:06:11 by agaroux           #+#    #+#             */
-/*   Updated: 2025/02/11 14:58:10 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/02/22 16:49:17 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void r_rotate(struct node **head)
+void r_rotate(t_list **head)
 {
-    struct node *tail;
-    struct node *temp;
+    t_list *tail;
+    t_list *temp;
     
     if ( !*head || !(*head)->next)
         return;
@@ -30,19 +30,19 @@ void r_rotate(struct node **head)
     tail->next = NULL;
 }
 
-void rra(struct node **head)
+void rra(t_list **head)
 {
     r_rotate(head);
     write(1, "rra\n", 4);
 }
 
-void rrb(struct node **head)
+void rrb(t_list **head)
 {
     r_rotate(head);
     write(1, "rrb\n", 4);
 }
 
-void rrr(struct node **head_a, struct node **head_b)
+void rrr(t_list **head_a, t_list **head_b)
 {
     r_rotate(head_a);
     r_rotate(head_b);

@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:50:16 by antoine           #+#    #+#             */
-/*   Updated: 2025/02/11 17:13:40 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/02/22 17:29:01 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-struct			node
+typedef struct node
 {
 	int			data;
 	struct node	*previous;
 	struct node	*next;
-} t_list;
+} 	t_list;
 
 int				ft_atoi(const char *str);
 
@@ -30,21 +30,21 @@ int				main(int argc, char **argv);
 
 int				ft_isspace(int c);
 
-void			ft_displaybackward(struct node *tail);
+void			ft_displaybackward(t_list *tail);
 
-void			ft_displayforward(struct node *head);
+void			ft_displayforward(t_list *head);
 
-struct node		*ft_newnode(int a);
+t_list		*ft_newnode(int a);
 
-void			ft_append(struct node **head, struct node **tail, int a);
+void			ft_append(t_list **head, t_list **tail, int a);
 
-static int		word_count(const char *str, char c);
+ int		word_count(const char *str, char c);
 
-static char		*fill_word(const char *str, int start, int end);
+ char		*fill_word(const char *str, int start, int end);
 
-static void		*ft_free(char **strs, int count);
+ void		*ft_free(char **strs, int count);
 
-static void		ft_initiate_vars(size_t *i, int *j, int *s_word);
+ void		ft_initiate_vars(size_t *i, int *j, int *s_word);
 
 char			**ft_split(const char *s, char c);
 
@@ -54,18 +54,22 @@ size_t			ft_strlen(const char *s);
 
 int				ft_check_repetition(char **tab);
 
+t_list			*ft_lstnew(int data);
+
+void	ft_lstadd_front(t_list **lst, t_list *new);
+
 // Rotate & swap
-void			rotate(struct node **head);
-void			ra(struct node **head);
-void			rb(struct node **head);
-void			rr(struct node **head_a, struct node **head_b);
-void			r_rotate(struct node **head);
-void			rra(struct node **head);
-void			rrb(struct node **head);
-void			rrr(struct node **head_a, struct node **head_b);
-void			swap(struct node **head);
-void			swap_a(struct node **head);
-void			swap_b(struct node **head);
-void			swap_both(struct node **head_a, struct node **head_b);
+void			rotate(t_list **head);
+void			ra(t_list **head);
+void			rb(t_list **head);
+void			rr(t_list **head_a, t_list **head_b);
+void			r_rotate(t_list **head);
+void			rra(t_list **head);
+void			rrb(t_list **head);
+void			rrr(t_list **head_a, t_list **head_b);
+void			swap(t_list **head);
+void			swap_a(t_list **head);
+void			swap_b(t_list **head);
+void			swap_both(t_list **head_a, t_list **head_b);
 
 #endif
