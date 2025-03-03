@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:51:47 by agaroux           #+#    #+#             */
-/*   Updated: 2025/02/24 15:44:02 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/03 15:25:27 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,41 +78,4 @@ int ft_check_repetition(char **tab)
         i++;
         }
     return (1);
-}
-
-t_list  *ft_max(t_list *head)
-{
-    t_list  *tmp;
-    int     max;
-    
-    if (!head)
-        return (NULL);
-    max = INT_MIN;
-    while (head)
-    {
-        
-        if (max < head->data)
-        {
-            max = head->data;
-            tmp = head;
-        }
-        head = head->next;
-    }
-    return (tmp);
-}
-
-bool ft_sorted(t_list *head)
-{
-    int i;
-    
-    if (!head)
-        return(false);
-    i = INT_MIN;
-    while (head)
-    {
-        if (head->data < i)
-            return (false);
-        head = head->next;
-    }
-    return (true);
 }
