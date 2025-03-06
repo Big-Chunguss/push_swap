@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:50:16 by antoine           #+#    #+#             */
-/*   Updated: 2025/03/03 15:39:02 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:13:34 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,21 +76,33 @@ void 	error_free(t_list **stack, char **argv, bool flag_argc_2);
 //ez sort
 bool stack_sorted(t_list *stack);
 t_list	*ft_max(t_list *head);
+t_list	*ft_min(t_list *stack);
 void 	ez_sort(t_list **head);
-t_list	*find_smallest(t_list *stack);
 
+//push_swap
 int len_stack(t_list *node);
 void set_current_position(t_list *node);
+void	push_swap(t_list **a, t_list **b);
+void set_target_node(t_list *a, t_list *b);
+void set_price(t_list *a, t_list *b);
+void set_cheapest(t_list *b);
+void	rotate_both(t_list **a,t_list **b,t_list *cheapest_node);
+void	reverse_rotate_both(t_list **a, t_list **b, t_list *cheapest_node);
+
+//move nodes
+void	move_nodes(t_list **a, t_list **b);
+t_list *return_cheapest(t_list *node);
+void finish_rotation(t_list **head, t_list *top_node, char c);
 
 // Rotate & swap
 void			rotate(t_list **head);
 void			ra(t_list **head);
 void			rb(t_list **head);
-void			rr(t_list **head_a, t_list **head_b);
+void			rotate_2(t_list **head_a, t_list **head_b);
 void			r_rotate(t_list **head);
 void			rra(t_list **head);
 void			rrb(t_list **head);
-void			rrr(t_list **head_a, t_list **head_b);
+void			r_rotate_2(t_list **head_a, t_list **head_b);
 void			swap(t_list **head);
 void			swap_a(t_list **head);
 void			swap_b(t_list **head);

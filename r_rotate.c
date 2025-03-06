@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:06:11 by agaroux           #+#    #+#             */
-/*   Updated: 2025/03/03 15:18:55 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/05 18:17:29 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 void r_rotate(t_list **head)
 {
-    t_list *tail;
-    t_list *temp;
-    
-    if ( !*head || !(*head)->next)
-        return;
-    tail = *head;
-    *head = (*head)->next;
-    (*head)->previous = NULL; 
-    temp = *head;
-    while (temp->next)
-           temp = temp->next;
-    temp->next = tail;
-    tail->previous = temp;
-    tail->next = NULL;
+	t_list	*last;
+	int				len;
+
+	len = len_stack(*head);
+	if (NULL == *head || NULL == head || 1 == len)
+		return ;
+	last = ft_lstlast(*head);
+	last->previous->next = NULL;
+	last->next = *head;
+	last->previous = NULL;
+	*head = last;
+	last->next->previous = last;
 }
 
 void rra(t_list **head)
@@ -42,7 +40,7 @@ void rrb(t_list **head)
     write(1, "rrb\n", 4);
 }
 
-void rrr(t_list **head_a, t_list **head_b)
+void r_rotate_2(t_list **head_a, t_list **head_b)
 {
     r_rotate(head_a);
     r_rotate(head_b);

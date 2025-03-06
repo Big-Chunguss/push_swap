@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:06:33 by antoine           #+#    #+#             */
-/*   Updated: 2025/03/03 15:32:00 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:25:37 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ void ft_append(t_list **head, int i)
     t_list *node;
     t_list *last_node;
     
-    if (!*head)//if the list is empty
-        return; 
     node = ft_newnode(i);
-    if  (!node)
+    if (!node)
         return;
-    node->next = NULL;
-    node->data = i;
     if (!*head)
     {
       *head = node;
@@ -47,6 +43,7 @@ void ft_append(t_list **head, int i)
             last_node->next = node;
             node->previous = last_node;
     }
+    //printf("node->data: %d\n", node->data);
 }
 
 void ft_displayforward(t_list *a)
@@ -73,9 +70,9 @@ int main(int argc, char **argv)
 {
     t_list *a = NULL;
     t_list *b = NULL;
-    int count;
+    int count = 1;
 
-    if (argc <= 1 || (argc == 2 && !argv[1][0]))
+    if (argc == 1 || (argc == 2 && !argv[1][0]))
         return (0);
     else if (argc == 2)
         argv = ft_split(argv[1], ' ');
@@ -84,14 +81,14 @@ int main(int argc, char **argv)
     if (!stack_sorted(a))
     {
         if(len_stack(a) == 2)
-            swap_a(a);
+            swap_a(&a);
         else if (len_stack(a) == 3)
-            ez_sort(a);
+            ez_sort(&a);
         else
-            push_swap(a, b);
+            push_swap(&a, &b);
     }
     //ez_sort(&a);
     ft_displayforward(a);
-    //ft_displaybackward(b);
+    free_stack(&a);
     return (0);
 }

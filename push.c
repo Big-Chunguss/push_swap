@@ -6,13 +6,13 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:40:40 by agaroux           #+#    #+#             */
-/*   Updated: 2025/03/03 15:27:42 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:34:48 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push(t_list **dst, t_list **src)
+void push(t_list **dst, t_list **src)
 {
     t_list *node_to_push;
     

@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:51:34 by antoine           #+#    #+#             */
-/*   Updated: 2025/02/24 11:56:09 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:28:19 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char *fill_word(const char *str, int start, int end)
         start++;
     }
     word[i] = 0;
-    //printf("%s\n", word);
+    //printf("word: %s\n", word);
     return (word);
 }
 
@@ -102,6 +102,17 @@ int word_count(const char *str, char c)
             x = 0;
         str++;
     }
+    //printf("count: %d\n", count);
     return (count);
 }
 
+/*int main()
+{
+    int i = 0;
+    char **argv = ft_split("1 3 45 23 -5 -0", 32);
+    while (argv[i])
+    {
+        printf("argv[%d] = %s\n", i, argv[i]);
+        i++;
+    }
+}*/

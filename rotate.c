@@ -6,7 +6,7 @@
 /*   By: agaroux <agaroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 11:56:23 by agaroux           #+#    #+#             */
-/*   Updated: 2025/02/22 16:49:56 by agaroux          ###   ########.fr       */
+/*   Updated: 2025/03/05 18:00:44 by agaroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void rotate(t_list **head)
 {
-    t_list *tail;
+    t_list *old_head;
+    t_list *last;
     
-    if ( !*head || !(*head)->next)
+    if (!*head || !(*head)->next)
         return;
-    tail = *head;
-    while (tail->next)
-           tail = tail->next;
-    tail->previous->next = NULL; // Detach the last node from its previous node
-    tail->previous = NULL;       // Update the last node's prev pointer
-    tail->next = *head;      // Point the last node's next to the current head
-    (*head)->previous = tail;    // Update the current head's prev pointer
-    *head = tail;            // Update head to point to the new head (last node)
+    old_head = *head;
+    *head = old_head->next;
+    (*head)->previous = NULL;
+    last = old_head;
+    while (last->next)
+        last = last->next;
+    last->next = old_head;
+    old_head->previous = last;
+    old_head->next = NULL;
 }
 
 void ra(t_list **head)
@@ -40,7 +42,7 @@ void rb(t_list **head)
     write(1, "rb\n", 3);
 }
 
-void rr(t_list **head_a, t_list **head_b)
+void rotate_2(t_list **head_a, t_list **head_b)
 {
     rotate(head_a);
     rotate(head_b);
